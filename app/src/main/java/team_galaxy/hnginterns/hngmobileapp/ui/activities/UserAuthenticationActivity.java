@@ -44,6 +44,7 @@ public class UserAuthenticationActivity extends AppCompatActivity implements
 
     @Override
     public void onLoginClicked(String email, String password) {
+        //TODO: Make API call to authenticate the user on the server
         Toast.makeText(this, "API call for login yet to be implemented", Toast.LENGTH_LONG).show();
     }
 
@@ -62,6 +63,7 @@ public class UserAuthenticationActivity extends AppCompatActivity implements
 
     @Override
     public void onSignUpClicked(String email, String password, String confirm_password) {
+        //TODO: Make API call to pass the user details to the server
         Toast.makeText(this, "API call for sign up yet to be implemented", Toast.LENGTH_LONG).show();
     }
 }
