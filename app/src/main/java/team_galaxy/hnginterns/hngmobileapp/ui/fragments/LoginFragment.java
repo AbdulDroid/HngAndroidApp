@@ -1,5 +1,6 @@
 package team_galaxy.hnginterns.hngmobileapp.ui.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -21,7 +23,7 @@ import team_galaxy.hnginterns.hngmobileapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements View.OnClickListener{
 
     @BindView(R.id.email_address)
     EditText emailView;
@@ -29,6 +31,17 @@ public class LoginFragment extends Fragment {
     EditText passwordView;
     @BindView(R.id.sign_in_button)
     Button signIn;
+    @BindView(R.id.text_sign_up)
+    TextView signUpView;
+
+    private OnFragmentInteractionListener mListener;
+
+    public static LoginFragment newInstance() {
+        LoginFragment fragment = new LoginFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public LoginFragment() {
         // Required empty public constructor
@@ -40,6 +53,7 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.bind(this, view);
+        setupViews();
 
         emailView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -88,9 +102,15 @@ public class LoginFragment extends Fragment {
 
             }
         });
-
+        signIn.setOnClickListener(this);
+        signUpView.setOnClickListener(this);
         showSignInButton();
         return view;
+    }
+
+    private void setupViews() {
+        emailView.setText("");
+        passwordView.setText("");
     }
 
     private void showSignInButton() {
@@ -102,9 +122,15 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    @OnClick(R.id.sign_in_button)
-    public void clickSignIn() {
-        //TODO: Make a call to the API to authenticate user
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener){
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "must implement OnFragmentInteractionListener");
+        }
     }
 
 
@@ -120,5 +146,23 @@ public class LoginFragment extends Fragment {
                 .commit();
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.sign_in_button:
+                String email = emailView.getText().toString();
+                String password = passwordView.getText().toString();
+                mListener.onLoginClicked(email, password);
+                break;
+            case R.id.text_sign_up:
+                mListener.onSignUpClicked();
+                break;
+        }
+    }
+
+    public interface OnFragmentInteractionListener{
+        void onLoginClicked(String email, String password);
+        void onSignUpClicked();
+    }
 }
 
