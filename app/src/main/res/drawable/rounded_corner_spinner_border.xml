@@ -5,6 +5,6 @@
     <size android:height="30dp"/>
     <corners android:radius="3dp"
         />
-    <stroke android:width="5px" android:color="@color/checkoutGrey" />
+    <stroke android:width="4dp" android:color="@color/check_out_grey" />
 
 </shape>

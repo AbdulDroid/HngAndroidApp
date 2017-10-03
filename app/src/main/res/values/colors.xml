@@ -3,9 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="checkoutDefault">#fff</color>
-    <color name="checkoutBlue">#3d9ee3</color>
-    <color name="checkoutGrey">#ececec</color>
+    <color name="check_out_default">#fff</color>
+    <color name="check_out_blue">#3d9ee3</color>
+    <color name="check_out_grey">#ececec</color>
+    <color name="text_color">#ffcdcdcd</color>
+    <color name="text_color_dark">#80212121</color>
 
 
 
