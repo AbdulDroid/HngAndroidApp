@@ -17,6 +17,13 @@
     <string name="payment_options">Payment Options</string>
     <string name="your_info">Your Info</string>
     <string name="check_out">Check out</string>
+    <string name="checkout_name">Full Name</string>
+    <string name="checkout_phone">Phone</string>
+    <string name="checkout_email">Email Address</string>
+    <string name="checkout_button">Proceed</string>
+    <string name="atm">ATM</string>
+    <string name="bank_deposit">BANK DEPOSIT</string>
+    <string name="pay_at_the_hotel">PAY AT THE HOTEL</string>
 
     <string name="facebook_app_id">1204775476320820</string>
     <string name="fb_login_protocol_scheme">fb1204775476320820</string>

@@ -3,8 +3,6 @@
     package="team_galaxy.hnginterns.hngmobileapp">
     <uses-permission android:name="android.permission.INTERNET"/>
 
-
-
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -25,7 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.BookingActivity" />
+        <activity android:name=".ui.activities.BookingActivity" >
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
         <activity android:name=".ui.activities.CardActivity"></activity>
     </application>
 

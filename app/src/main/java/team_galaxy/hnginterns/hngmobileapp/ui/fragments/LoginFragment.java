@@ -25,15 +25,12 @@ import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import team_galaxy.hnginterns.hngmobileapp.R;
-
-import static team_galaxy.hnginterns.hngmobileapp.R.id.google_sign_in_button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -152,7 +149,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Goo
 
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (!s.toString().matches("^(?=.*\\d).{6}$")) {
+                if (!s.toString().matches("^(?=.*\\d).{6,32}$")) {
                     passwordView.setError("Must have at least 1digit, and must be up to 6 characters");
                 } else if (TextUtils.isEmpty(s)) {
                     passwordView.setError("This field cannot be empty");
@@ -182,7 +179,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Goo
 
     private void showSignInButton() {
         if (Patterns.EMAIL_ADDRESS.matcher(emailView.getText().toString()).matches() &&
-                passwordView.getText().toString().matches("^(?=.*\\d).{6}$")) {
+                passwordView.getText().toString().matches("^(?=.*\\d).{6,32}$")) {
             signIn.setVisibility(View.VISIBLE);
         } else {
             signIn.setVisibility(View.GONE);

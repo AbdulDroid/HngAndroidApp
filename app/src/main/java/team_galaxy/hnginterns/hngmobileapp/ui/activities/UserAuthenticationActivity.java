@@ -43,6 +43,16 @@ public class UserAuthenticationActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void onBackPressed() {
+        if (signUpFragment.isAdded()) {
+            loginFragment = null;
+            showSignInFragment();
+        } else {
+            showSignInFragment();
+        }
+    }
+
+    @Override
     public void onLoginClicked(String email, String password) {
         //TODO: Make API call to authenticate the user on the server
         Toast.makeText(this, "API call for login yet to be implemented", Toast.LENGTH_LONG).show();

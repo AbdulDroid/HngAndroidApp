@@ -1,7 +1,6 @@
 package team_galaxy.hnginterns.hngmobileapp.ui.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,8 +30,7 @@ public class ConfirmBookingFragment extends Fragment {
      * this fragment using the provided parameters.
      * @return A new instance of fragment ConfirmBookingFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static ConfirmBookingFragment newInstance(String param1, String param2) {
+    public static ConfirmBookingFragment newInstance() {
         ConfirmBookingFragment fragment = new ConfirmBookingFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -52,13 +50,6 @@ public class ConfirmBookingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_confirm_booking, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -89,7 +80,6 @@ public class ConfirmBookingFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onConfirmClicked();
     }
 }
