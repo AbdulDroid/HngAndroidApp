@@ -14,5 +14,9 @@
     <string name="fb_login_protocol_scheme"></string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="confirm_booking">Confirm booking</string>
+    <string name="payment_options">Payment Options</string>
+    <string name="your_info">Your Info</string>
+    <string name="check_out">Check out</string>
 
 </resources>
