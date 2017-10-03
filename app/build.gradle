@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "team_galaxy.hnginterns.hngmobileapp"
         minSdkVersion 15
@@ -58,3 +59,4 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
+apply plugin: 'com.google.gms.google-services'
