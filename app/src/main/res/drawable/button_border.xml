@@ -4,7 +4,7 @@
 
     <corners android:radius="18dp"/>
 
-    <stroke android:color="F000000"
+    <stroke android:color="#F0000000"
         android:width="0.5dp"/>
 
     <gradient

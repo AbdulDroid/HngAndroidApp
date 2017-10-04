@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -39,6 +40,9 @@ public class YourInfoFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.spinner_title)
     Spinner titleSpinner;
 
+    private String[] titleArray;
+    private String[] countryArray;
+
     public YourInfoFragment() {
         // Required empty public constructor
     }
@@ -69,6 +73,12 @@ public class YourInfoFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_your_info, container, false);
         ButterKnife.bind(this, view);
         proceedButton.setOnClickListener(this);
+        titleArray = new String[]{"Mr", "Miss", "Mrs", "Chief", "Dr", "Prof", "Pst", "Imam"};
+        ArrayAdapter<String> titleAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, titleArray);
+        titleSpinner.setAdapter(titleAdapter);
+        countryArray = new String[]{"Country", "Nigeria", "USA", "England", "Ghana", "South Africa"};
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, countryArray);
+        countrySpinner.setAdapter(countryAdapter);
         return view;
     }
 
