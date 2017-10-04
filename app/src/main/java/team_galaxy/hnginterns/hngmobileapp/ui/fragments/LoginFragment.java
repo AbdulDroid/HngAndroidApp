@@ -1,7 +1,9 @@
 package team_galaxy.hnginterns.hngmobileapp.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -15,6 +17,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,7 +35,7 @@ import team_galaxy.hnginterns.hngmobileapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment implements View.OnClickListener{
+public class LoginFragment extends Fragment implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
     @BindView(R.id.email_address)
     EditText emailView;
@@ -34,6 +46,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.text_sign_up)
     TextView signUpView;
 
+
+    LoginButton loginButton;
+    CallbackManager callbackManager;
     private OnFragmentInteractionListener mListener;
 
     public static LoginFragment newInstance() {
@@ -49,6 +64,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         //TODO: Implement the logic for social media logins
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +72,50 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.bind(this, view);
         setupViews();
+
+
+
+
+
+        //SignInButton signInButton = (SignInButton) findViewById(R.id.google_sign_in_button);
+        // Configure sign-in to request the user's ID, email address, and basic
+// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        // Build a GoogleApiClient with access to the Google Sign-In API and the
+// options specified by gso.
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+                .enableAutoManage((getActivity()) /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+
+        loginButton = (LoginButton) view.findViewById(R.id.button_facebook_login);
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.setReadPermissions("email");
+        // If using in a fragment
+        loginButton.setFragment(this);
+        // Other app specific specialization
+
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
 
         emailView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,7 +149,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (!s.toString().matches("^(?=.*\\d).{6}$")) {
+                if (!s.toString().matches("^(?=.*\\d).{6,32}$")) {
                     passwordView.setError("Must have at least 1digit, and must be up to 6 characters");
                 } else if (TextUtils.isEmpty(s)) {
                     passwordView.setError("This field cannot be empty");
@@ -110,6 +170,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         return view;
     }
 
+    
+
     private void setupViews() {
         emailView.setText("");
         passwordView.setText("");
@@ -117,7 +179,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
     private void showSignInButton() {
         if (Patterns.EMAIL_ADDRESS.matcher(emailView.getText().toString()).matches() &&
-                passwordView.getText().toString().matches("^(?=.*\\d).{6}$")) {
+                passwordView.getText().toString().matches("^(?=.*\\d).{6,32}$")) {
             signIn.setVisibility(View.VISIBLE);
         } else {
             signIn.setVisibility(View.GONE);
@@ -135,6 +197,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
 
     @OnClick(R.id.text_forgot_password)
     public void clickForgotPassword() {
@@ -162,9 +229,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
     public interface OnFragmentInteractionListener{
         void onLoginClicked(String email, String password);
         void onSignUpClicked();
     }
+
+
 }
 
