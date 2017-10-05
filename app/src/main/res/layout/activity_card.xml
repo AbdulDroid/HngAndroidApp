@@ -19,14 +19,19 @@
             android:src="@drawable/ic_chevron_left_black_24dp"
             android:tint="@color/com_facebook_blue"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:text="Enter Card"
+            android:layout_gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:textColor="@color/com_facebook_blue"/>
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="end|center"
             android:layout_marginLeft="100dp"
             android:src="@drawable/ic_close_black_24dp"/>
     </LinearLayout>
@@ -35,58 +40,118 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Choose Card Type"
+        android:textColor="@color/text_color_dark"
         android:textAlignment="center"/>
 
-
-    <EditText
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:drawableLeft="@drawable/ic_person_black_24dp"
-        android:hint="Card Holder Name"
-        android:padding="10dp"
-        android:background="@drawable/edit_text"/>
-
-    <EditText
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Card Number"
-        android:drawableLeft="@drawable/ic_credit_card_black_24dp"
-        android:tint="#e3e3e3"
-        android:padding="10dp"
-        android:background="@drawable/edit_text"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="2dp"
+            android:paddingStart="2dp"
+            android:src="@drawable/viewpager_active"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="2dp"
+            android:paddingStart="2dp"
+            android:src="@drawable/viewpager_inactive"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="2dp"
+            android:paddingStart="2dp"
+            android:src="@drawable/viewpager_inactive"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="2dp"
+            android:paddingStart="2dp"
+            android:src="@drawable/viewpager_inactive"/>
+
+    </LinearLayout>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:hint="Card Holder Name"
+        android:padding="16dp"
+        android:textColor="@color/text_color_dark"
+        android:textColorHint="@color/text_color_dark"
+        android:background="@drawable/edit_text"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Card Number"
+        android:drawableStart="@drawable/ic_credit_card_black_24dp"
+        android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+        android:tint="@color/text_color"
+        android:textColor="@color/text_color_dark"
+        android:textColorHint="@color/text_color_dark"
+        android:padding="16dp"
+        android:background="@drawable/edit_text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_gravity="center"
             android:hint="CVV"
+            android:textColor="@color/text_color_dark"
+            android:textColorHint="@color/text_color_dark"
             android:drawableLeft="@drawable/ic_security_black_24dp"
-            android:padding="10dp"
+            android:drawableStart="@drawable/ic_security_black_24dp"
+            android:padding="16dp"
             android:background="@drawable/edit_text"/>
         <EditText
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:layout_weight="1"
             android:hint="Exp. date"
+            android:textColor="@color/text_color_dark"
+            android:textColorHint="@color/text_color_dark"
             android:drawableLeft="@drawable/ic_date_range_black_24dp"
-            android:padding="10dp"
+            android:drawableStart="@drawable/ic_date_range_black_24dp"
+            android:padding="16dp"
             android:background="@drawable/edit_text"/>
 
     </LinearLayout>
 
     <Button
-        android:layout_width="300dp"
-        android:layout_margin="40dp"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:minHeight="16dp"
+        android:minWidth="16dp"
+        android:paddingEnd="100dp"
+        android:paddingStart="100dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:text="Save"
         android:textColor="#fff"
-        android:background="@color/com_facebook_blue"/>
+        android:background="@drawable/rounded_corner_button_border"/>
 
 </LinearLayout>

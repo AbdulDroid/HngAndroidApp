@@ -101,7 +101,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/event" />
+                    android:src="@drawable/ic_date_range_black_24dp" />
 
                 <TextView
                     android:id="@+id/checkin"
@@ -142,7 +142,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/event" />
+                    android:src="@drawable/ic_date_range_black_24dp" />
 
                 <TextView
                     android:id="@+id/textView4"
