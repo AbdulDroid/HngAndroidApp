@@ -50,7 +50,7 @@
     <EditText
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:hint="Card Number"
         android:drawableLeft="@drawable/ic_credit_card_black_24dp"
         android:tint="#e3e3e3"
@@ -65,7 +65,7 @@
         <EditText
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:hint="CVV"
             android:drawableLeft="@drawable/ic_security_black_24dp"
             android:padding="10dp"
