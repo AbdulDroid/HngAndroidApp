@@ -81,4 +81,12 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="300dp"
+        android:layout_margin="40dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textColor="#fff"
+        android:background="@color/com_facebook_blue"/>
+
 </LinearLayout>
