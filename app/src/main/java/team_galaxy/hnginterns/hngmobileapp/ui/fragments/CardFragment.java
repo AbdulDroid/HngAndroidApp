@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import team_galaxy.hnginterns.hngmobileapp.R;
 
@@ -20,6 +21,11 @@ import team_galaxy.hnginterns.hngmobileapp.R;
 public class CardFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private static final String ARGS_SECTION_NUMBER = "section_number";
+    ImageView imageView;
+
+    int[] images = new int[]{R.drawable.mastercard, R.drawable.visa_card,
+            R.drawable.mastercard, R.drawable.visa_card};
 
     public CardFragment() {
         // Required empty public constructor
@@ -30,10 +36,11 @@ public class CardFragment extends Fragment {
      * this fragment using the provided parameters.
      * @return A new instance of fragment CardFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static CardFragment newInstance() {
+
+    public static CardFragment newInstance(int sectionNumber) {
         CardFragment fragment = new CardFragment();
         Bundle args = new Bundle();
+        args.putInt(ARGS_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,7 +57,11 @@ public class CardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_card, container, false);
+        View view =  inflater.inflate(R.layout.fragment_card, container, false);
+        imageView = view.findViewById(R.id.card_image);
+        imageView.setImageResource(images[getArguments().getInt(ARGS_SECTION_NUMBER)-1]);
+
+        return view;
     }
 
     @Override

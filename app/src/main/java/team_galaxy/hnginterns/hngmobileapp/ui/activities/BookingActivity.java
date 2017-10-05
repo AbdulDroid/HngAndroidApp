@@ -1,5 +1,6 @@
 package team_galaxy.hnginterns.hngmobileapp.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -44,7 +45,17 @@ public class BookingActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_booking);
         ButterKnife.bind(this);
 
-        showYourInfoFragment();
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("page")){
+            String page = intent.getStringExtra("page");
+            if (page.equalsIgnoreCase("Confirm")){
+                showConfirmBookingFragment();
+            }
+        } else {
+
+            showYourInfoFragment();
+        }
     }
 
 
@@ -118,6 +129,12 @@ public class BookingActivity extends AppCompatActivity implements
 
     @Override
     public void onOptionSelected(String option) {
-        showConfirmBookingFragment();
+        if (option.equalsIgnoreCase("Atm")){
+            Intent intent = new Intent(this, CardActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            showConfirmBookingFragment();
+        }
     }
 }

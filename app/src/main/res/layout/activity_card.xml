@@ -33,7 +33,7 @@
             android:layout_height="28dp"
             android:layout_gravity="end|center"
             android:layout_marginLeft="100dp"
-            android:src="@drawable/ic_close_black_24dp"/>
+            android:src="@drawable/cancel_black"/>
     </LinearLayout>
 
     <TextView
@@ -54,30 +54,35 @@
         android:orientation="horizontal"
         android:padding="8dp"
         android:layout_gravity="center">
+
         <ImageView
+            android:id="@+id/card1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="2dp"
-            android:paddingStart="2dp"
-            android:src="@drawable/viewpager_active"/>
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/viewpager_active"/>
         <ImageView
+            android:id="@+id/card2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="2dp"
-            android:paddingStart="2dp"
-            android:src="@drawable/viewpager_inactive"/>
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/viewpager_inactive"/>
         <ImageView
+            android:id="@+id/card3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="2dp"
-            android:paddingStart="2dp"
-            android:src="@drawable/viewpager_inactive"/>
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/viewpager_inactive"/>
         <ImageView
+            android:id="@+id/card4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="2dp"
-            android:paddingStart="2dp"
-            android:src="@drawable/viewpager_inactive"/>
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/viewpager_inactive"/>
 
     </LinearLayout>
 
@@ -127,8 +132,8 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_weight=".9"
             android:hint="Exp. date"
             android:textColor="@color/text_color_dark"
             android:textColorHint="@color/text_color_dark"
@@ -140,16 +145,18 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:minHeight="16dp"
         android:minWidth="16dp"
-        android:paddingEnd="100dp"
-        android:paddingStart="100dp"
+        android:paddingEnd="120dp"
+        android:paddingStart="120dp"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
+        android:textStyle="bold"
         android:text="Save"
         android:textColor="#fff"
         android:background="@drawable/rounded_corner_button_border"/>
